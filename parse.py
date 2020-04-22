@@ -55,16 +55,6 @@ else:
     input_url = input("Enter the URL of the youtube video: ")
     command = run_youtube(input_url)
 
-# DEFAULT_PIPELINE = "v4l2src ! decodebin ! videoconvert ! video/x-raw ! gvadetect model=intel_models/intel/face-detection-adas-0001/FP16/face-detection-adas-0001.xml ! "\
-#         "gvawatermark ! timeoverlay ! "\
-#         "x264enc ! mpegtsmux ! hlssink location=video_files/segment%06d.ts playlist-location=video_files/index.m3u8 target-duration=10"
-
-# ap = argparse.ArgumentParser()
-# ap.add_argument("-p", "--pipeline", required=False,
-#                 default=DEFAULT_PIPELINE, help="Gstreamer pipeline without gst-launch")
-
-# args = vars(ap.parse_args())
-
 
 def on_message(bus: Gst.Bus, message: Gst.Message, loop: GObject.MainLoop):
     mtype = message.type
@@ -88,13 +78,9 @@ def on_message(bus: Gst.Bus, message: Gst.Message, loop: GObject.MainLoop):
     return True
 
 
-# command = args["pipeline"]
 
-# Gst.Pipeline https://lazka.github.io/pgi-docs/Gst-1.0/classes/Pipeline.html
-# https://lazka.github.io/pgi-docs/Gst-1.0/functions.html#Gst.parse_launch
 pipeline = Gst.parse_launch(command)
 
-# https://lazka.github.io/pgi-docs/Gst-1.0/classes/Bus.html
 bus = pipeline.get_bus()
 
 # allow bus to emit messages to main thread
@@ -107,7 +93,6 @@ pipeline.set_state(Gst.State.PLAYING)
 loop = GObject.MainLoop()
 
 # Add handler to specific signal
-# https://lazka.github.io/pgi-docs/GObject-2.0/classes/Object.html#GObject.Object.connect
 bus.connect("message", on_message, loop)
 
 try:
