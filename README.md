@@ -49,7 +49,10 @@ apt-get update
 apt-get install python-pip
 pip install youtube-dl
 ```
-
+List of all the models
+```
+cd intel_models/intel && ls
+```
 Open up a different terminal
 ```
 docker ps
