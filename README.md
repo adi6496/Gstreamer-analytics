@@ -1,5 +1,14 @@
 # Gstreamer-analytics
 
+
+Clone the Gstreamer Analtyics repo
+```
+mkdir -p ~/gva
+# Download GVA repository
+git clone https://github.com/opencv/gst-video-analytics ~/gva/gst-video-analytics
+cd ~/gva/gst-video-analytics
+```
+
 Pull the latest Gstreamer analytics docker image
 ```
 docker pull adi6496/gst-video-analytics:latest
