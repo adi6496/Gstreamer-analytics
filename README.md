@@ -68,3 +68,6 @@ python3 parse.py -d intel_models/intel/face-detection-adas-0001/FP16/face-detect
 ```
 
 The parse.py file generates index.m3u8 files and the corresponding segment files for HLS. 
+
+To be done - This container will also contain a sender.py file which sends the m3u8 file along with segments files to Kafka http bridge endpoint.
+
